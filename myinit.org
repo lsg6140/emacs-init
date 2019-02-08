@@ -39,16 +39,17 @@
    #+RESULTS:
 
 *** Easy templates
-   Org 9.2 comes with a new template expansion mechanism, combining ~org-insert-structure-template~ bound to ~C-c C-,~. Previous patterns such as ~<s TAB~ can be activated by requiring Org Tempo library ([[https://orgmode.org/Changes.html#org1b5e967][Imcompatible changes]]).
+   Org 9.2 comes with a new template expansion mechanism, combining ~org-insert-structure-template~ bound to ~C-c C-,~ Previous patterns such as ~<s TAB~ can be activated by requiring Org Tempo library ([[https://orgmode.org/Changes.html#org1b5e967][Imcompatible changes]]).
 
    #+begin_src emacs-lisp
      (require 'org-tempo)
    #+end_src
 
    More templates can added by customizing the variable ~org-structure-template-alist~. To enable complex templates, ~tempo-define-template~ function or Yasnippet are useful.
+
    ! ~org-structure-template-alist~ only works for blocks. [[https://emacs.stackexchange.com/questions/46795/is-it-possible-to-add-templates-other-than-begin-end-to-org-structure-temp][check here]].
  
-   ~<n~ is added to insert name ~'#+name: '~ before code block.
+   ~<n~ is added to insert name ~#+name: ~ before code block.
 
    #+begin_src emacs-lisp
    (tempo-define-template "code-block-with-name"

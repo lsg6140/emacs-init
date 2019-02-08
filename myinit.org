@@ -14,10 +14,10 @@
                                    "~/dev/ode/ode.org"))
     #+end_src
 ** Babel
+  Machine specific path such as ~(setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")~ is place at ~$HOME/spacemacs/.emacs.d/init.el~.
    #+begin_src emacs-lisp 
      (setq org-src-fontify-natively t)
      (setq org-confirm-babel-evaluate nil)
-     (setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
 
      (org-babel-do-load-languages
       'org-babel-load-languages

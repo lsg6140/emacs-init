@@ -8,16 +8,16 @@
     #+begin_src emacs-lisp
       (setq-default major-mode 'text-mode)
     #+end_src
-*** Agenda files 
+*** Agenda files
     #+begin_src emacs-lisp
       (setq org-agenda-files (list "~/dev/org/1.org"
                                    "~/dev/ode/ode.org"))
     #+end_src
 ** Babel
-   #+begin_src emacs-lisp 
+  Machine specific path such as ~(setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")~ is place at ~$HOME/spacemacs/.emacs.d/init.el~.
+   #+begin_src emacs-lisp
      (setq org-src-fontify-natively t)
      (setq org-confirm-babel-evaluate nil)
-     (setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
 
      (org-babel-do-load-languages
       'org-babel-load-languages
@@ -39,7 +39,7 @@
    #+RESULTS:
 
 *** Easy templates
-   Org 9.2 comes with a new template expansion mechanism, combining ~org-insert-structure-template~ bound to ~C-c C-,~ Previous patterns such as ~<s TAB~ can be activated by requiring Org Tempo library ([[https://orgmode.org/Changes.html#org1b5e967][Imcompatible changes]]).
+   Org 9.2 comes with a new template expansion mechanism, combining ~org-insert-structure-template~ bound to ~C-c C-comma~. Previous patterns such as ~<s TAB~ can be activated by requiring Org Tempo library ([[https://orgmode.org/Changes.html#org1b5e967][Imcompatible changes]]).
 
    #+begin_src emacs-lisp
      (require 'org-tempo)
@@ -48,8 +48,8 @@
    More templates can added by customizing the variable ~org-structure-template-alist~. To enable complex templates, ~tempo-define-template~ function or Yasnippet are useful.
 
    ! ~org-structure-template-alist~ only works for blocks. [[https://emacs.stackexchange.com/questions/46795/is-it-possible-to-add-templates-other-than-begin-end-to-org-structure-temp][check here]].
- 
-   ~<n~ is added to insert name ~#+name: ~ before code block.
+
+   ~<n~ is added to insert name ~#+name:~ before code block.
 
    #+begin_src emacs-lisp
    (tempo-define-template "code-block-with-name"
@@ -77,15 +77,15 @@
 
    #+RESULTS:
 
-   
-   
+
+
 ** Key bindings
 *** Open myinit.org file
     #+begin_src emacs-lisp
       (spacemacs/declare-prefix "o" "own-menu")
       (spacemacs/set-leader-keys "oi" (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
     #+end_src
- 
+
 *** Bind F4 for tangle
     #+begin_src emacs-lisp
      (define-key org-mode-map (kbd "<f4>")'org-babel-tangle)

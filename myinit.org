@@ -69,6 +69,14 @@
                             "<P")
    #+end_src
 
+*** Misc
+   In C++ mode, typing ' inserts \'\'. To make this stop
+   #+begin_src emacs-lisp
+     (setq-default sp-escape-quotes-after-inser nil)
+   #+end_src
+
+   #+RESULTS:
+
 ** Line visual
    #+begin_src emacs-lisp
      (add-hook 'org-mode-hook 'visual-line-mode)
@@ -76,7 +84,6 @@
    #+end_src
 
    #+RESULTS:
-
 
 
 ** Key bindings

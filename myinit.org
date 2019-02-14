@@ -82,7 +82,7 @@
    #+end_src
 
 *** Misc
-   In C++ mode, typing ' inserts \'\'. This is caused by automatic escaping. Details can be found at [[https://smartparens.readthedocs.io/en/latest/automatic-escaping.html][smartparens]].
+   In C++ mode, typing single quotation mark ' inserts \\'\\'. This is caused by automatic escaping. Details can be found at [[https://smartparens.readthedocs.io/en/latest/automatic-escaping.html][smartparens]].
    #+begin_src emacs-lisp
      (setq-default sp-escape-quotes-after-insert nil)
    #+end_src

@@ -9,10 +9,10 @@
       (setq-default major-mode 'text-mode)
     #+end_src
 *** Agenda files
-    Path to agenda-files needs to be machine specific. Therefore, it should be in ~"~/spacemacs/.emacs.d/init.el"~ as
+    ~todo.org~ file should be located at "google drive" to sync to iPhone. Therefore, path to agenda-files needs to be machine specific. Therefore, it should be in ~$HOME/spacemacs/.emacs.d/init.el~ as
     #+begin_example
-      (setq org-agenda-file (list "path/to/orgfile1.org"
-                                  "path/to/orgfile2.org"))
+      (setq org-agenda-file (list "path/to/google-drive/todo.org"
+                                  "path/to/another.org"))
     #+end_example
 ** Babel
   Machine specific path such as ~(setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")~ is place at ~$HOME/spacemacs/.emacs.d/init.el~.

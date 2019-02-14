@@ -9,10 +9,11 @@
       (setq-default major-mode 'text-mode)
     #+end_src
 *** Agenda files
-    #+begin_src emacs-lisp
-      (setq org-agenda-files (list "~/dev/org/1.org"
-                                   "~/dev/ode/ode.org"))
-    #+end_src
+    Path to agenda-files needs to be machine specific. Therefore, it should be in ~"~/spacemacs/.emacs.d/init.el"~ as
+    #+begin_example
+      (setq org-agenda-file (list "path/to/orgfile1.org"
+                                  "path/to/orgfile2.org"))
+    #+end_example
 ** Babel
   Machine specific path such as ~(setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")~ is place at ~$HOME/spacemacs/.emacs.d/init.el~.
    #+begin_src emacs-lisp
@@ -70,12 +71,10 @@
    #+end_src
 
 *** Misc
-   In C++ mode, typing ' inserts \'\'. To make this stop
+   In C++ mode, typing ' inserts \'\'. This is caused by automatic escaping. Details can be found at [[https://smartparens.readthedocs.io/en/latest/automatic-escaping.html][smartparens]].
    #+begin_src emacs-lisp
-     (setq-default sp-escape-quotes-after-inser nil)
+     (setq-default sp-escape-quotes-after-insert nil)
    #+end_src
-
-   #+RESULTS:
 
 ** Line visual
    #+begin_src emacs-lisp

@@ -50,7 +50,7 @@
 
    ! ~org-structure-template-alist~ only works for blocks. [[https://emacs.stackexchange.com/questions/46795/is-it-possible-to-add-templates-other-than-begin-end-to-org-structure-temp][check here]].
 
-   ~<n~ is added to insert name ~#+name:~ before code block.
+   ~<n~ is added to insert ~#+name:~ before code block.
 
    #+begin_src emacs-lisp
    (tempo-define-template "code-block-with-name"
@@ -59,6 +59,17 @@
                             n> "#+end_src")
                           "<n"
                           "Insert 'name' line for code block")
+   #+end_src
+   
+   ~<cpp~ is added to insert C++ code block.
+
+   #+begin_src emacs-lisp
+   (tempo-define-template "code-block-with-name"
+                          '(> "#+name: " p
+                            n> "#+begin_src C++ :main no"
+                            n> "#+end_src")
+                          "<cpp"
+                          "Insert C++ code block")
    #+end_src
 
    ~<P~ is added to insert property drawer.

@@ -126,8 +126,6 @@
               "* TODO %?\n %i\n")))
    #+end_src
 
-   #+RESULTS:
-   | t | Todo | entry | (file+headline ~/.emacs.d/todo.org Tasks) | * TODO %? |
 ** Sync across devices
      To enable same spacemacs configuration across the computers, personal configuration files are located at ~$HOME/.emacs.d~ folder and shared by Github. [[https://beorgapp.com][Beorg]] is an iOS app useful to use org mode todo tasks in iOS devices. ~todo.org~ file should be located at some clouds system to sync to iPhone (my company blocks Dropbox...). Symbolic link is a good solution to link ~todo.org~ local file to ~todo.org~ in the cloud.
     #+begin_example

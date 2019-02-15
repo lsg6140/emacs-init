@@ -9,13 +9,16 @@
       (setq-default major-mode 'text-mode)
     #+end_src
 *** Agenda files
-    ~todo.org~ file should be located at "google drive" to sync to iPhone. Therefore, path to agenda-files needs to be machine specific. Therefore, it should be in ~$HOME/spacemacs/.emacs.d/init.el~ as
-    #+begin_example
-      (setq org-agenda-file (list "path/to/google-drive/todo.org"
-                                  "path/to/another.org"))
-    #+end_example
+    #+begin_src emacs-lisp
+      (setq org-agenda-file (list "~/.emacs.d/todo.org"))
+    #+end_src
 ** Babel
-  Machine specific path such as ~(setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")~ is place at ~$HOME/spacemacs/.emacs.d/init.el~.
+*** Supported languages
+  Machine specific path such as
+   #+begin_example
+     (setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
+   #+end_example
+ is place at ~$HOME/spacemacs/.emacs.d/init.el~.
    #+begin_src emacs-lisp
      (setq org-src-fontify-natively t)
      (setq org-confirm-babel-evaluate nil)
@@ -36,8 +39,6 @@
         )
       )
    #+end_src
-
-   #+RESULTS:
 
 *** Easy templates
    Org 9.2 comes with a new template expansion mechanism, combining ~org-insert-structure-template~ bound to ~C-c C-comma~. Previous patterns such as ~<s TAB~ can be activated by requiring Org Tempo library ([[https://orgmode.org/Changes.html#org1b5e967][Imcompatible changes]]).
@@ -95,13 +96,16 @@
 
    #+RESULTS:
 
-
 ** Key bindings
-*** Open myinit.org file
+*** Open personal files
     #+begin_src emacs-lisp
       (spacemacs/declare-prefix "o" "own-menu")
       (spacemacs/set-leader-keys "oi" (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
+      (spacemacs/set-leader-keys "oe" (lambda () (interactive) (find-file "~/spacemacs/.emacs.d/init.el")))
+      (spacemacs/set-leader-keys "ot" (lambda () (interactive) (find-file "~/.emacs.d/todo.org")))
     #+end_src
+
+    #+RESULTS:
 
 *** Bind F4 for tangle
     #+begin_src emacs-lisp
@@ -110,3 +114,22 @@
 
    #+RESULTS:
    : org-babel-tangle
+** Capture templates
+   %-escape allow dynamic insertion of content. Details can be found [[https://www.gnu.org/software/emacs/manual/html_mono/org.html#Template-expansion][here]].
+   #+begin_src emacs-lisp
+     (setq org-capture-templates
+           '(("t" "Todo" entry (file+headline "~/.emacs.d/todo.org" "Tasks")
+              "* TODO %?\n %i\n %a")
+             ("j" "Journal" entry (file+olp+datetree "~/.emacs.d/journal.org")
+              "* %?nEntered on %U\n %i\n %a")
+             ("b" "Buy" entry (file+headline "~/.emacs.d/todo.org" "Buy")
+              "* TODO %?\n %i\n")))
+   #+end_src
+
+   #+RESULTS:
+   | t | Todo | entry | (file+headline ~/.emacs.d/todo.org Tasks) | * TODO %? |
+** Sync across devices
+     To enable same spacemacs configuration across the computers, personal configuration files are located at ~$HOME/.emacs.d~ folder and shared by Github. [[https://beorgapp.com][Beorg]] is an iOS app useful to use org mode todo tasks in iOS devices. ~todo.org~ file should be located at some clouds system to sync to iPhone (my company blocks Dropbox...). Symbolic link is a good solution to link ~todo.org~ local file to ~todo.org~ in the cloud.
+    #+begin_example
+     $ ln -s ~/.emacs.d/todo.org path/to/google-drive/todo.org
+    #+end_example

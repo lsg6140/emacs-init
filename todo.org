@@ -1,0 +1,18 @@
+Org todo
+
+* Study
+** Studying of "Programming Principles and Practice"
+*** TODO Reading a chapter
+    SCHEDULED: <2019-02-18 Mon ++1w>
+*** Exercise
+*** Reading a chapter
+*** Exercise
+*** Reading a chapter
+*** Exercise
+
+* Tasks
+** TODO test for capture 
+ 
+  [[file:~/dev/org/remember.org]]
+* Buy
+** TODO Buy this 

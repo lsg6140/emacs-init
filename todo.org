@@ -3,12 +3,29 @@ Org todo
 * Study
 ** Studying of "Programming Principles and Practice"
 *** TODO Reading a chapter
-    SCHEDULED: <2019-02-18 Mon ++1w>
-*** Exercise
-*** Reading a chapter
-*** Exercise
-*** Reading a chapter
-*** Exercise
+    SCHEDULED: <2019-02-25 Mon +1w>
+    :PROPERTIES:
+    :LAST_REPEAT: [2019-02-18 Mon 13:07]
+    :END:
+    - State "DONE"       from "TODO"       [2019-02-18 Mon 13:07]
+*** TODO Exercise
+    SCHEDULED: <2019-02-19 Tue +1w>
+*** TODO Reading a chapter
+    SCHEDULED: <2019-02-27 Wed +1w>
+    :PROPERTIES:
+    :LAST_REPEAT: [2019-02-20 Wed 13:19]
+    :END:
+    - State "DONE"       from "TODO"       [2019-02-20 Wed 13:19]
+*** TODO Exercise
+    SCHEDULED: <2019-02-21 Thu +1w>
+*** TODO Reading a chapter
+    SCHEDULED: <2019-02-22 Fri +1w>
+    :PROPERTIES:
+    :LAST_REPEAT: [2019-02-15 Fri 16:55]
+    :END:
+    - State "DONE"       from "TODO"       [2019-02-15 Fri 16:55]
+*** TODO Exercise
+    SCHEDULED: <2019-02-16 Sat +1w>
 
 * Tasks
 ** TODO test for capture 
@@ -16,3 +33,30 @@ Org todo
   [[file:~/dev/org/remember.org]]
 * Buy
 ** TODO Buy this 
+* Recipe
+** White chocolate butter fat bombs
+*** Ingredients
+   - 2 tbsp coconut oil
+   - 2 tbsp butter
+   - 120 g cocoa butter
+   - 2 tbsp sweeter
+   - 1/4 tsp vanilla extract
+   - 1 pinch salt
+   - any nuts or berries
+*** Instructions
+   - Melt oil and butter
+   - Add sweeter and salt
+   - Add vanilla
+   - Into some molds
+   - Freeze for about 30 min
+** Almond fudge fat bombs
+*** Ingredients
+   - 1/2 cup almond butter
+   - 1/4 cup butter
+   - 2 tbsp coconut oil
+   - Sweeter
+*** Instructions
+   - Melt almond butter, butter, coconut oil
+   - Whisk in the sweeter and stir will to combine
+   - Pour mixture into bite sized paper liners set inside a mini muffin tin
+   - Refrigerate or freeze until hardened

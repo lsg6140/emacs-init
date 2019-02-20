@@ -18,7 +18,7 @@
    #+begin_example
      (setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
    #+end_example
- is place at ~$HOME/spacemacs/.emacs.d/init.el~.
+ is placed at ~$HOME/spacemacs/.emacs.d/init.el~.
    #+begin_src emacs-lisp
      (setq org-src-fontify-natively t)
      (setq org-confirm-babel-evaluate nil)
@@ -127,7 +127,7 @@
    #+end_src
 
 ** Sync across devices
-     To enable same spacemacs configuration across the computers, personal configuration files are located at ~$HOME/.emacs.d~ folder and shared by Github. [[https://beorgapp.com][Beorg]] is an iOS app useful to use org mode todo tasks in iOS devices. ~todo.org~ file should be located at some clouds system to sync to iPhone (my company blocks Dropbox...). Symbolic link is a good solution to link ~todo.org~ local file to ~todo.org~ in the cloud.
+     To enable same spacemacs configuration across the computers, personal configuration files are located at ~$HOME/.emacs.d~ folder and shared by Github. [[https://beorgapp.com][Beorg]] is an iOS app to use org mode todo tasks in iOS devices. ~todo.org~ file should be located at some clouds system to sync to iPhone (my company blocks Dropbox...). Symbolic link is a good solution to link ~todo.org~ local file to ~todo.org~ in the cloud.
     #+begin_example
      $ ln -s ~/.emacs.d/todo.org path/to/google-drive/todo.org
     #+end_example

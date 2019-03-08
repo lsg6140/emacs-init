@@ -12,6 +12,16 @@
     #+begin_src emacs-lisp
       (setq org-agenda-file (list "~/.emacs.d/todo.org"))
     #+end_src
+** MELPA 
+   [[https://melpa.org/#/getting-started][Getting started]].
+   #+begin_src emacs-lisp
+     (require 'package)
+
+     (package-initialize)
+   #+end_src
+
+   #+RESULTS:
+
 ** Babel
 *** Supported languages
   Machine specific path such as
@@ -22,6 +32,9 @@
    #+begin_src emacs-lisp
      (setq org-src-fontify-natively t)
      (setq org-confirm-babel-evaluate nil)
+
+     ;; fix an incompatibility between the ob-async and ob-ipython pacakges
+     (setq ob-async-no-async-languages-alist '("ipython"))
 
      (org-babel-do-load-languages
       'org-babel-load-languages
@@ -38,6 +51,14 @@
         (java . t)
         )
       )
+   #+end_src
+*** ob-async 
+   [[https://github.com/astahlman/ob-async][ob-async]].
+   =ob-async= is available in MELPA.
+   Require the package and =ob-async= will handle any source block which includes =:async= in its header-args.
+   #+begin_src emacs-lisp
+     dotspacemacs-additional-packages '(ob-async)
+     ;;(require 'ob-async)
    #+end_src
 
 *** Easy templates

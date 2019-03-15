@@ -12,16 +12,6 @@
     #+begin_src emacs-lisp
       (setq org-agenda-file (list "~/.emacs.d/todo.org"))
     #+end_src
-** MELPA 
-   [[https://melpa.org/#/getting-started][Getting started]].
-   #+begin_src emacs-lisp
-     (require 'package)
-
-     (package-initialize)
-   #+end_src
-
-   #+RESULTS:
-
 ** Babel
 *** Supported languages
   Machine specific path such as
@@ -43,6 +33,7 @@
         (emacs-lisp . t)
         (latex . t)
         (python . t)
+        (ipython . t)
         (R . t)
         (octave . t)
         (ditaa . t)
@@ -52,15 +43,6 @@
         )
       )
    #+end_src
-*** ob-async 
-   [[https://github.com/astahlman/ob-async][ob-async]].
-   =ob-async= is available in MELPA.
-   Require the package and =ob-async= will handle any source block which includes =:async= in its header-args.
-   #+begin_src emacs-lisp
-     dotspacemacs-additional-packages '(ob-async)
-     ;;(require 'ob-async)
-   #+end_src
-
 *** Easy templates
    Org 9.2 comes with a new template expansion mechanism, combining ~org-insert-structure-template~ bound to ~C-c C-comma~. Previous patterns such as ~<s TAB~ can be activated by requiring Org Tempo library ([[https://orgmode.org/Changes.html#org1b5e967][Imcompatible changes]]).
 
@@ -94,6 +76,18 @@
                           "Insert C++ code block")
    #+end_src
 
+   =<py= for python
+   #+begin_src emacs-lisp
+     (tempo-define-template "python-code-block"
+                            '(> "#+begin_src python" p
+                              n> "#+end_src")
+                            "<py"
+                            "Insert Python code block")
+   #+end_src
+
+   #+RESULTS:
+   : tempo-template-python-code-block
+
    ~<P~ is added to insert property drawer.
    #+begin_src emacs-lisp
      (tempo-define-template "property-drawer"
@@ -102,12 +96,24 @@
                                 n> ":END:")
                             "<P")
    #+end_src
+*** Python 
+    #+begin_src emacs-lisp
+      (setq python-shell-interpreter "python3")
+      (setq org-babel-python-comman "python3")
+    #+end_src
+
+    #+RESULTS:
+    : python3
+
+    This is from [[http://kitchingroup.cheme.cmu.edu/blog/2014/09/27/Improved-debugging-of-Python-code-blocks-in-org-mode/][here]].
 
 *** Misc
    In C++ mode, typing single quotation mark ' inserts \\'\\'. This is caused by automatic escaping. Details can be found at [[https://smartparens.readthedocs.io/en/latest/automatic-escaping.html][smartparens]].
    #+begin_src emacs-lisp
      (setq-default sp-escape-quotes-after-insert nil)
    #+end_src
+
+   #+RESULTS:
 
 ** Line visual
    #+begin_src emacs-lisp
@@ -117,24 +123,6 @@
 
    #+RESULTS:
 
-** Key bindings
-*** Open personal files
-    #+begin_src emacs-lisp
-      (spacemacs/declare-prefix "o" "own-menu")
-      (spacemacs/set-leader-keys "oi" (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
-      (spacemacs/set-leader-keys "oe" (lambda () (interactive) (find-file "~/spacemacs/.emacs.d/init.el")))
-      (spacemacs/set-leader-keys "ot" (lambda () (interactive) (find-file "~/.emacs.d/todo.org")))
-    #+end_src
-
-    #+RESULTS:
-
-*** Bind F4 for tangle
-    #+begin_src emacs-lisp
-     (define-key org-mode-map (kbd "<f4>")'org-babel-tangle)
-    #+end_src
-
-   #+RESULTS:
-   : org-babel-tangle
 ** Capture templates
    %-escape allow dynamic insertion of content. Details can be found [[https://www.gnu.org/software/emacs/manual/html_mono/org.html#Template-expansion][here]].
    #+begin_src emacs-lisp
@@ -152,3 +140,60 @@
     #+begin_example
      $ ln -s ~/.emacs.d/todo.org path/to/google-drive/todo.org
     #+end_example
+
+** LaTeX 
+   #+begin_src emacs-lisp
+     (setq ort-latex-create-formula-image-program 'dvipng)
+   #+end_src
+
+   #+RESULTS:
+   : dvipn
+   Set the width of inline images to 400 pixels
+   #+begin_src emacs-lisp
+     (setq org-image-actual-width '(400))
+   #+end_src
+
+   #+RESULTS:
+   | 400 |
+
+* Configuration layers 
+  [[https://github.com/syl20bnr/spacemacs/blob/master/doc/LAYERS.org][Configuration layers]]
+  To add a package, create a layer first by
+  =SPC SPC configuration-layer/create-layer RET= 
+  Then make a layer in =private= foler. After making a layer, =package.el= will open. For example, to install =ob-ipython=, write code in =package.el=
+  #+begin_example
+    (defconst ob-ipython-packages
+      '(ob-ipython))
+
+    (defun ob-ipython/init-ob-ipython ()
+      (use-package ob-ipython
+        :defer t))
+  #+end_example
+  Then write =ob-ipython= in =dotspacemacs-configuration-layers= in =spacemacs/layers ()= of =.spacemacs= file. =SPC f e R= to apply.
+
+* Key bindings
+** Open personal files
+   #+begin_src emacs-lisp
+     (spacemacs/declare-prefix "o" "own-menu")
+     (spacemacs/set-leader-keys "oi" (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
+     (spacemacs/set-leader-keys "oe" (lambda () (interactive) (find-file "~/spacemacs/.emacs.d/init.el")))
+     (spacemacs/set-leader-keys "ot" (lambda () (interactive) (find-file "~/.emacs.d/todo.org")))
+   #+end_src
+
+   #+RESULTS:
+
+** Bind F4 for tangle
+   #+begin_src emacs-lisp
+    (define-key org-mode-map (kbd "<f4>")'org-babel-tangle)
+   #+end_src
+
+  #+RESULTS:
+  : org-babel-tangle
+
+** LaTex Preview 
+   #+begin_src emacs-lisp
+     (define-key org-mode-map (kbd "<f5>") 'org-toggle-latex-fragment)
+   #+end_src
+
+   #+RESULTS:
+   : org-toggle-latex-fragment
